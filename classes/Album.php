@@ -182,4 +182,34 @@ class Album
         return $albums;
     }
 
+    // Methode om een nieuwe persoon toe te voegen aan de database
+//    public function save(PDO $db): void
+//    {
+//        // Voorbereiden van de query
+//        $stmt = $db->prepare("INSERT INTO Album (Naam, Artiesten, Release_datum, URL, Afbeelding, Prijs) VALUES (:Naam, :Artiesten, :Release_datum, :URL, :Afbeelding, :Prijs)");
+//        $stmt->bindParam(':Naam', $this->voornaam);
+//        $stmt->bindParam(':Artiesten', $this->achternaam);
+//        $stmt->bindParam(':Release_datum', $this->Release_datum);
+//        $stmt->bindParam(':URL', $this->URL);
+//        $stmt->bindParam(':Afbeelding', $this->Afbeelding);
+//        $stmt->bindParam(':Prijs', $this->Prijs);
+////        $stmt->execute();
+//    }
+    public function save(PDO $db): void
+    {
+        // Voorbereiden van de query
+        $stmt = $db->prepare("INSERT INTO Album (Naam, Artiesten, Release_datum, URL, Afbeelding, Prijs) VALUES (:Naam, :Artiesten, :Release_datum, :URL, :Afbeelding, :Prijs)");
+
+        // Correcte attributen van de klasse binden
+        $stmt->bindParam(':Naam', $this->Naam);
+        $stmt->bindParam(':Artiesten', $this->Artiesten);
+        $stmt->bindParam(':Release_datum', $this->Release_datum);
+        $stmt->bindParam(':URL', $this->URL);
+        $stmt->bindParam(':Afbeelding', $this->Afbeelding);
+        $stmt->bindParam(':Prijs', $this->Prijs);
+
+        // Execute de query
+        $stmt->execute();
+    }
+
 }

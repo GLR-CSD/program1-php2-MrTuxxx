@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personenlijst</title>
+    <title>Album voegen</title>
     <link rel="stylesheet" href="public/css/simple.css">
 </head>
 <body>
@@ -43,7 +43,7 @@
             </ul>
         </div>
     <?php endif; ?>
-    <form action="toevoegen.php" method="post">
+    <form action="album_toevoegen.php" method="post">
         <label for="Naam">Naam:</label>
         <input type="text" id="Naam" name="Naam" value="<?= $formValues['Naam'] ?? '' ?>" required>
         <?php if (isset($errors['Naam'])): ?>

@@ -8,26 +8,26 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Valideer de ingediende gegevens
     $errors = [];
     $formValues = [
-        'voornaam' => $_POST['voornaam'] ?? '',
-        'achternaam' => $_POST['achternaam'] ?? '',
-        'telefoonnummer' => $_POST['telefoonnummer'] ?? '',
-        'email' => $_POST['email'] ?? '',
-        'opmerkingen' => $_POST['opmerkingen'] ?? '',
+        'Naam' => $_POST['Naam'] ?? '',
+        'Artiest' => $_POST['Artiest'] ?? '',
+        'Release_datum' => $_POST['Release_datum'] ?? '',
+        'URL' => $_POST['URL'] ?? '',
+        'Afbeelding' => $_POST['Afbeelding'] ?? '',
     ];
 
     // Valideer voornaam
-    if (empty($_POST['voornaam'])) {
-        $errors['voornaam'] = "Voornaam is verplicht.";
+    if (empty($_POST['Naam'])) {
+        $errors['Naam'] = "Naam is verplicht!.";
     }
 
     // Valideer achternaam
-    if (empty($_POST['achternaam'])) {
-        $errors['achternaam'] = "Achternaam is verplicht.";
+    if (empty($_POST['Artiest'])) {
+        $errors['Artiest'] = "Artiest is verplicht.";
     }
 
     // Valideer e-mailadres
-    if (!empty($_POST['email']) && !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-        $errors['email'] = "Ongeldig e-mailadres.";
+    if (!empty($_POST['Release_datum']) && !filter_var($_POST['Release_datum'], FILTER_VALIDATE_EMAIL)) {
+        $errors['Release_datum'] = "Ongeldig e-mailadres.";
     }
 
     // Valideer telefoonnummer (NL-formaat)
@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Als er geen validatiefouten zijn, voeg de persoon toe aan de database
     if (empty($errors)) {
         require_once 'db.php';
-        require_once 'classes/Persoon.php';
+        require_once 'classes/Album.php';
 
         // Maak een nieuw Persoon object met de ingediende gegevens
         $persoon = new Persoon(
